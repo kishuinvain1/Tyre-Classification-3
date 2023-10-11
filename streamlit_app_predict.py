@@ -80,6 +80,7 @@ def main():
     image, svd_img = load_image()
 
     result = st.button('Detect')
+    seal_bear = False
     if result:
         results = predict(model, svd_img)
         #results = predict(model2, url)
@@ -90,6 +91,7 @@ def main():
             st.write("No Tyre Detected")
         else:
             st.write('DETECTION RESULTS')
+           
             svd_img = cv2.cvtColor(svd_img,cv2.COLOR_BGR2RGB)
             for cnt,item in enumerate(results['predictions']):
                 new_img_pth = results['predictions'][0]['image_path']
@@ -101,11 +103,74 @@ def main():
                 cnf = results['predictions'][cnt]['confidence']
                 if 'bearing' in cl:
                     cl = cl + " & seal"
+                    seal_bear = True
                 elif 'seal' in cl:
                     continue    
                 svd_img = drawBoundingBox(svd_img,x, y, w, h, cl, cnf)
 
-            st.image(svd_img, caption='Resulting Image')    
+            st.image(svd_img, caption='Resulting Image') 
+
+            #Company Name
+            st.write('*MRF')
+
+            #Size
+            if "ktm-rc-200-rw" in cl:
+                st.write('*Size: 150/60 R17')   
+            elif "ktm-rc-200-fw" in cl:
+                st.write('*Size: 110/70 R17') 
+            elif "ktm-duke-250-rw" in cl:
+                st.write('Size: 150/60 ZR17')
+            elif "ktm-duke-250-fw" in cl:
+                st.write('Size: 110/70 ZR17') 
+
+
+            #Rim Specs
+            if "ktm-rc-200-rw" in cl:
+                st.write('*Rim Color: Black')   
+            elif "ktm-rc-200-fw" in cl:
+                st.write('*Rim Color: Black') 
+            elif "ktm-duke-250-rw" in cl:
+                st.write('*Rim Color: Saffron')
+            elif "ktm-duke-250-fw" in cl:
+                st.write('*Rim Color: Saffron')  
+
+
+            #Disc Brake Specs
+            if "ktm-rc-200-rw" in cl:
+                st.write('*Disc Brake: 5 Bolts')   
+            elif "ktm-rc-200-fw" in cl:
+                st.write('*Disc Brake: 5 Bolts') 
+            elif "ktm-duke-250-rw" in cl:
+                st.write('*Disc Brake: 5 Bolts')
+            elif "ktm-duke-250-fw" in cl:
+                st.write('*Disc Brake: 5 Bolts')   
+
+
+            #Sensor Disc Specs
+            if "ktm-rc-200-rw" in cl:
+                st.write('*Sensor Disc: 5 Bolts, Black Colored')   
+            elif "ktm-rc-200-fw" in cl:
+                st.write('*Sensor Disc: 5 Bolts, Black Colored') 
+            elif "ktm-duke-250-rw" in cl:
+                st.write('*Sensor Disc: 5 Bolts, Black Colored')
+            elif "ktm-duke-250-fw" in cl:
+                st.write('*Sensor Disc: 5 Bolts, Black Colored')   
+
+
+            #Seal & Bearing Sepcs
+            if "ktm-rc-200-rw" in cl and if seal_bear:
+                st.write('*Seal & Bearing: Present')   
+            elif "ktm-rc-200-fw" in cl and if seal_bear:
+                st.write('*Seal & Bearing: Present') 
+            elif "ktm-duke-250-rw" in cl and if seal_bear:
+                st.write('*Seal & Bearing: Present')
+            elif "ktm-duke-250-fw" in cl and if seal_bear:
+                st.write('*Seal & Bearing: Present')           
+
+            
+                     
+
+
            
 
 if __name__ == '__main__':
