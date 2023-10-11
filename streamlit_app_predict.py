@@ -96,7 +96,7 @@ def main():
                 h = results['predictions'][cnt]['height']
                 cl = results['predictions'][cnt]['class']
                 cnf = results['predictions'][cnt]['confidence']
-                svd_img = drawBoundingBimgox(svd_img,x, y, w, h, cl, cnf)
+                svd_img = drawBoundingBox(svd_img,x, y, w, h, cl, cnf)
 
             st.image(svd_img, caption='Resulting Image')    
            
