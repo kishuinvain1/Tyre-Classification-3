@@ -48,7 +48,7 @@ def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
     #img = Image.open(saved_image)
     #img = cv2.imread(saved_image)
     img = saved_image
-    #img = cv2.cvtColor(saved_image,cv2.COLOR_BGR2RGB)
+    
     x = int(x)
     y = int(y)
     w = int(w)
@@ -89,6 +89,7 @@ def main():
             st.write("No Tyre Detected")
         else:
             st.write('DETECTION RESULTS')
+            svd_img = cv2.cvtColor(svd_img,cv2.COLOR_BGR2RGB)
             for cnt,item in enumerate(results['predictions']):
                 new_img_pth = results['predictions'][0]['image_path']
                 x = results['predictions'][cnt]['x']
