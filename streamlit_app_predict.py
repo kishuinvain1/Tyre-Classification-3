@@ -158,13 +158,13 @@ def main():
 
 
             #Seal & Bearing Sepcs
-            if "ktm-rc-200-rw" in cl and if seal_bear:
+            if "ktm-rc-200-rw" in cl and seal_bear:
                 st.write('*Seal & Bearing: Present')   
-            elif "ktm-rc-200-fw" in cl and if seal_bear:
+            elif "ktm-rc-200-fw" in cl and seal_bear:
                 st.write('*Seal & Bearing: Present') 
-            elif "ktm-duke-250-rw" in cl and if seal_bear:
+            elif "ktm-duke-250-rw" in cl and seal_bear:
                 st.write('*Seal & Bearing: Present')
-            elif "ktm-duke-250-fw" in cl and if seal_bear:
+            elif "ktm-duke-250-fw" in cl and seal_bear:
                 st.write('*Seal & Bearing: Present')           
 
             
