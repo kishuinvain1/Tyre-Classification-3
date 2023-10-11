@@ -27,10 +27,11 @@ def load_image():
         path = os.path.abspath(name)
         print("abs path")
         print(path)
-	
-        cv2.imwrite("main_image.jpg", opencv_image)
+        opencv_image_resz = cv2.resize(opencv_image.copy(), (640,640))
+        cv2.imwrite("main_image_original.jpg", opencv_image)
+        cv2.imwrite("main_image.jpg", opencv_image_resz)
        
-    return path, opencv_image
+    return path, opencv_image_resz
        
 
 
