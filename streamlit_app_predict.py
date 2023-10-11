@@ -58,7 +58,8 @@ def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
     
     img = cv2.rectangle(img, start_pnt, end_pnt, (0,255,0), 10)
     img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 1, cv2.LINE_AA)	
-    st.image(img, caption='Resulting Image')	
+    	
+    return img
     
 
 
@@ -86,18 +87,18 @@ def main():
             st.image(svd_img)
             st.write("No Tyre Detected")
         else:
-            new_img_pth = results['predictions'][0]['image_path']
-            x = results['predictions'][0]['x']
-            y = results['predictions'][0]['y']
-            w = results['predictions'][0]['width']
-            h = results['predictions'][0]['height']
-            cl = results['predictions'][0]['class']
-            cnf = results['predictions'][0]['confidence']
-
             st.write('DETECTION RESULTS')
-             
+            for cnt,item in enumerate(results['predictions']):
+                new_img_pth = results['predictions'][0]['image_path']
+                x = results['predictions'][cnt]['x']
+                y = results['predictions'][cnt]['y']
+                w = results['predictions'][cnt]['width']
+                h = results['predictions'][cnt]['height']
+                cl = results['predictions'][cnt]['class']
+                cnf = results['predictions'][cnt]['confidence']
+                svd_img = drawBoundingBimgox(svd_img,x, y, w, h, cl, cnf)
 
-            drawBoundingBox(svd_img,x, y, w, h, cl, cnf)
+            st.image(svd_img, caption='Resulting Image')    
            
 
 if __name__ == '__main__':
