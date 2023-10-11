@@ -54,15 +54,9 @@ def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
     start_pnt = (x-w//2,y-h//2)
     end_pnt = (x+w//2, y+h//2)
     txt_start_pnt = (x-w//2, y-h//2-15)
-    if cl == 'front-alloy-outer':
-        cl = 'front_wheel-front_disc-6_innerclip_bolts'
-    elif cl == 'rear-spokes-inner':
-        cl = 'rear_wheel-rear_disc-5_innerclip_bolts' 
-    elif cl == 'front-alloy-inner':
-        cl = 'front_wheel-front_disc-5_innerclip_bolts'       
     
     img = cv2.rectangle(img, start_pnt, end_pnt, (0,255,0), 10)
-    img = cv2.putText(img, "KTM200-"+cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 1, cv2.LINE_AA)	
+    img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 1, cv2.LINE_AA)	
     st.image(img, caption='Resulting Image')	
     
 
@@ -74,9 +68,10 @@ def predict(model, url):
 	
 def main():
     st.title('Tyre Classification')
-    rf = Roboflow(api_key="iYDj3AF1byBTN6qkTYwP")
-    project = rf.workspace().project("tyre-classification")
-    model = project.version(3).model
+    rf = Roboflow(api_key="0Uglhm9vMkjvOzEnA7t2")
+    project = rf.workspace().project("tyre-classification-6icx3")
+    model = project.version(1).model
+
      
     image, svd_img = load_image()
 
@@ -99,21 +94,7 @@ def main():
             cnf = results['predictions'][0]['confidence']
 
             st.write('DETECTION RESULTS')
-            st.write('* Model: KTM-200')
-            if "front" in cl:    
-                st.write('* Front Wheel')
-            else:
-                st.write('* Rear Wheel')  
-
-            if "alloy" in cl:
-                st.write('* Front Disc')
-            else:
-                st.write('* Rear Disc')  
-
-            if "inner" in cl:
-                st.write('* 5 Inner Clip Bolts')  
-            else:
-                st.write('* 6 Inner Clip Bolts') 
+             
 
             drawBoundingBox(svd_img,x, y, w, h, cl, cnf)
            
