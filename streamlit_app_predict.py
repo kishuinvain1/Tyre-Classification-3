@@ -126,13 +126,13 @@ def main():
 
             #Rim Specs
             if "ktm-rc-200-rw" in cl:
-                st.write('*Rim Color: Black')   
+                st.write('*Rim: Black Colored')   
             elif "ktm-rc-200-fw" in cl:
-                st.write('*Rim Color: Black') 
+                st.write('*Rim: Black Colored') 
             elif "ktm-duke-250-rw" in cl:
-                st.write('*Rim Color: Saffron')
+                st.write('*Rim: Saffron Colored')
             elif "ktm-duke-250-fw" in cl:
-                st.write('*Rim Color: Saffron')  
+                st.write('*Rim: Saffron Colored')  
 
 
             #Disc Brake Specs
