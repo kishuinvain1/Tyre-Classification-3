@@ -98,6 +98,10 @@ def main():
                 h = results['predictions'][cnt]['height']
                 cl = results['predictions'][cnt]['class']
                 cnf = results['predictions'][cnt]['confidence']
+                if 'bearing' in cl:
+                    cl = cl + "&seal"
+                if 'seal' in cl:
+                    continue    
                 svd_img = drawBoundingBox(svd_img,x, y, w, h, cl, cnf)
 
             st.image(svd_img, caption='Resulting Image')    
