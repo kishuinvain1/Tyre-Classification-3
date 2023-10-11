@@ -111,7 +111,7 @@ def main():
             st.image(svd_img, caption='Resulting Image') 
 
             #Company Name
-            st.write('*MRF')
+            st.write('*Mfr: MRF')
 
             #Size
             if "ktm-rc-200-rw" in cl:
@@ -119,9 +119,9 @@ def main():
             elif "ktm-rc-200-fw" in cl:
                 st.write('*Size: 110/70 R17') 
             elif "ktm-duke-250-rw" in cl:
-                st.write('Size: 150/60 ZR17')
+                st.write('*Size: 150/60 ZR17')
             elif "ktm-duke-250-fw" in cl:
-                st.write('Size: 110/70 ZR17') 
+                st.write('*Size: 110/70 ZR17') 
 
 
             #Rim Specs
