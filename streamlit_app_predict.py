@@ -100,7 +100,7 @@ def main():
                 cnf = results['predictions'][cnt]['confidence']
                 if 'bearing' in cl:
                     cl = cl + "&seal"
-                if 'seal' in cl:
+                elif 'seal' in cl:
                     continue    
                 svd_img = drawBoundingBox(svd_img,x, y, w, h, cl, cnf)
 
