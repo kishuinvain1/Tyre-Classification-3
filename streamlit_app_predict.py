@@ -110,6 +110,17 @@ def main():
 
             st.image(svd_img, caption='Resulting Image') 
 
+            #Tyre-Type
+            if "ktm-rc-200-rw" in cl:
+                st.write('*KTM RC 200 REAR-WHEEL')   
+            elif "ktm-rc-200-fw" in cl:
+                st.write('*KTM RC 200 FRONT-WHEEL') 
+            elif "ktm-duke-250-rw" in cl:
+                st.write('*KTM DUKE 250 REAR-WHEEL')
+            elif "ktm-duke-250-fw" in cl:
+                st.write('*KTM DUKE 250 FRONT-WHEEL') 
+
+
             #Company Name
             st.write('*Mfr: MRF')
 
