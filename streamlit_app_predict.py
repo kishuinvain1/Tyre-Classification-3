@@ -114,7 +114,6 @@ def main():
                     break
 
             if nok_flag:
-                st.image(image, caption='Model mismatch')
                 st.write("Wheel's Model is not ", option ) 
                 return   
 
