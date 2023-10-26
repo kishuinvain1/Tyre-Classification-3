@@ -118,7 +118,7 @@ def main():
                 st.write("Wheel's Model is not ", option ) 
                 return   
 
-            st.image(svd_img, caption='Resulting Image') 
+            st.image('main_image_original.jpg', caption='Resulting Image') 
 
             #Tyre-Type
             if "ktm-rc-200-rw" in cl:
