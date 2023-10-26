@@ -72,6 +72,7 @@ def predict(model, url):
 	
 def main():
     st.title('Tyre Classification')
+    option = st.selectbox('Choose Model', ('KTM-RC-200', 'KTM-DUKE-250'))
     rf = Roboflow(api_key="0Uglhm9vMkjvOzEnA7t2")
     project = rf.workspace().project("tyre-classification-6icx3")
     model = project.version(1).model
@@ -81,6 +82,7 @@ def main():
 
     result = st.button('Detect')
     seal_bear = False
+    nok_flag = False
     if result:
         results = predict(model, svd_img)
         #results = predict(model2, url)
@@ -107,6 +109,13 @@ def main():
                 elif 'seal' in cl:
                     continue    
                 svd_img = drawBoundingBox(svd_img,x, y, w, h, cl, cnf)
+                if not (option in cl):
+                    nok_flag = True
+                    break
+
+            if nok_flag:
+                st.write("Wheel's Model is not ", option ) 
+                return   
 
             st.image(svd_img, caption='Resulting Image') 
 
