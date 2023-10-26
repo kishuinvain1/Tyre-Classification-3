@@ -114,7 +114,7 @@ def main():
                     break
 
             if nok_flag:
-                st.write("Wheel's Model is not ", option ) 
+                st.write("*Wheel's Model is not ", option ) 
                 return   
 
             st.image(svd_img, caption='Resulting Image') 
