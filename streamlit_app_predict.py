@@ -114,11 +114,11 @@ def main():
                     break
 
             if nok_flag:
-                st.image(svd_img, caption='Model mismatch')
+                st.image('main_image_original.jpg', caption='Model mismatch')
                 st.write("Wheel's Model is not ", option ) 
                 return   
 
-            st.image('main_image_original.jpg', caption='Resulting Image') 
+            st.image(svd_img, caption='Resulting Image') 
 
             #Tyre-Type
             if "ktm-rc-200-rw" in cl:
