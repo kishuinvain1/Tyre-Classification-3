@@ -12,7 +12,7 @@ import subprocess
 
 
 def curl_command():
-    bash_command = 'base64 "main_image.jpg" | curl -d @- "https://detect.roboflow.com/detection-tyre/1?api_key=0Uglhm9vMkjvOzEnA7t2"'
+    bash_command = 'base64 "main_image_original.jpg" | curl -d @- "https://detect.roboflow.com/detection-tyre/1?api_key=0Uglhm9vMkjvOzEnA7t2"'
 
     process = subprocess.Popen(bash_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, error = process.communicate()
@@ -86,7 +86,7 @@ def predict(model, url):
 def main():
     st.title('Tyre Classification')
     option = st.selectbox('Choose Model', ('ktm-rc-200', 'ktm-duke-250'))
-     
+
     image, svd_img = load_image()
 
     result = st.button('Detect')
