@@ -15,7 +15,7 @@ from urllib.parse import quote
 def curl_command(url):
     print("<<<<<<<Inside curl_command>>>>>>>>>>>")
     # Your image URL
-    image_url = url
+    image_url = str(url)
 
     # Encode the image URL
     encoded_url = quote(image_url)
