@@ -75,11 +75,21 @@ def main():
     option = st.selectbox('Choose Model', ('ktm-rc-200', 'ktm-duke-250'))
     
     try:
-        rf = Roboflow(api_key="0Uglhm9vMkjvOzEnA7t2")
+        rf = Roboflow(api_key="0Uglhm9vMkjvOzEnA7t2")   
+    except:
+        print("Error Occurred")  
+
+    try:
         project = rf.workspace().project("detection-tyre")
+    except:
+        print("Error Occurred")
+
+    try:
         model = project.version(1).model
     except:
         print("Error Occurred")    
+
+
      
     image, svd_img = load_image()
 
