@@ -7,6 +7,7 @@ from PIL import Image
 import cv2
 import numpy as np
 import base64
+import logging
 
 
 
@@ -76,18 +77,19 @@ def main():
     
     try:
         rf = Roboflow(api_key="0Uglhm9vMkjvOzEnA7t2")   
-    except:
-        print("Error Occurred")  
+    except Exception as e:
+        logging.error("Error Occurred", exc_info=True)  
 
     try:
         project = rf.workspace().project("detection-tyre")
-    except:
-        print("Error Occurred")
+    except Exception as e:
+        logging.error("Error Occurred", exc_info=True)
 
     try:
         model = project.version(1).model
-    except:
-        print("Error Occurred")    
+    except Exception as e:
+        logging.error("Error Occurred", exc_info=True)
+ 
 
 
      
