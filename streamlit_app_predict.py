@@ -86,25 +86,6 @@ def predict(model, url):
 def main():
     st.title('Tyre Classification')
     option = st.selectbox('Choose Model', ('ktm-rc-200', 'ktm-duke-250'))
-    
-    """
-    try:
-        rf = Roboflow(api_key="0Uglhm9vMkjvOzEnA7t2")   
-    except Exception as e:
-        logging.error("Error Occurred", exc_info=True)  
-
-    try:
-        project = rf.workspace().project("detection-tyre")
-    except Exception as e:
-        logging.error("Error Occurred", exc_info=True)
-
-    try:
-        model = project.version(1).model
-    except Exception as e:
-        logging.error("Error Occurred", exc_info=True)
-
-    """
-
      
     image, svd_img = load_image()
 
