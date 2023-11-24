@@ -10,12 +10,13 @@ import base64
 import logging
 import subprocess
 from urllib.parse import quote
+import json
 
 
 def curl_command(url):
     print("<<<<<<<Inside curl_command>>>>>>>>>>>")
     # Your image URL
-    image_url = 'main_image.jpg'
+    image_url = url
 
     # Encode the image URL
     encoded_url = quote(image_url)
@@ -29,7 +30,7 @@ def curl_command(url):
     if output:
         print("Output:", output.decode())
         st.write("Output:", output.decode())
-        return output.decode()
+        return json.loads(output.decode())
     if error:
         print("Error:", error.decode())
         st.write("Error:", error.decode())
