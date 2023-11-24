@@ -73,10 +73,11 @@ def predict(model, url):
 def main():
     st.title('Tyre Classification')
     option = st.selectbox('Choose Model', ('ktm-rc-200', 'ktm-duke-250'))
+    
+
     rf = Roboflow(api_key="0Uglhm9vMkjvOzEnA7t2")
     project = rf.workspace().project("tyre-classification-6icx3")
     model = project.version(1).model
-
      
     image, svd_img = load_image()
 
