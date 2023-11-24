@@ -49,7 +49,7 @@ def curl_command():
 
     if output:
         print("Output:", output.decode())
-        st.write("Output:", output.decode())
+        #st.write("Output:", output.decode())
         return json.loads(output.decode())
     if error:
         print("Error:", error.decode())
@@ -76,7 +76,7 @@ def load_image():
         opencv_image_resz = cv2.resize(opencv_image.copy(), (640,640))
         cv2.imwrite("main_image_original.jpg", opencv_image)
         cv2.imwrite("main_image.jpg", opencv_image_resz)
-        st.image("main_image.jpg", caption="svd_image")
+        #st.image("main_image.jpg", caption="svd_image")
        
     return path, opencv_image_resz
        
@@ -121,9 +121,6 @@ def main():
     option = st.selectbox('Choose Model', ('ktm-rc-200', 'ktm-duke-250'))
 
     image, svd_img = load_image()
-
-    url = st.text_input("URL:")
-    st.write('url is:', url)
 
     result = st.button('Detect')
     seal_bear = False
