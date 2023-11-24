@@ -122,7 +122,7 @@ def main():
            
             svd_img = cv2.cvtColor(svd_img,cv2.COLOR_BGR2RGB)
             for cnt,item in enumerate(results['predictions']):
-                new_img_pth = results['predictions'][0]['image_path']
+                #new_img_pth = results['predictions'][0]['image_path']
                 x = results['predictions'][cnt]['x']
                 y = results['predictions'][cnt]['y']
                 w = results['predictions'][cnt]['width']
