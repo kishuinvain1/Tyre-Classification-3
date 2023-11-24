@@ -18,7 +18,7 @@ def curl_command(url):
     image_url = url
 
     # Encode the image URL
-    encoded_url = quote(image_url, safe=':/')
+    encoded_url = quote(image_url)
 
     # Construct the cURL command with the encoded URL as a variable
     bash_command = f'curl -X POST "https://detect.roboflow.com/detection-tyre/1?api_key=0Uglhm9vMkjvOzEnA7t2&image={encoded_url}"'
@@ -100,6 +100,7 @@ def main():
     image, svd_img = load_image()
 
     url = st.text_input("URL:")
+    print('url is:', url)
 
     result = st.button('Detect')
     seal_bear = False
