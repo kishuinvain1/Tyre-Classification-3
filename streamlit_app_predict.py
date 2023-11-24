@@ -8,9 +8,21 @@ import cv2
 import numpy as np
 import base64
 import logging
+import subprocess
 
 
+def curl_command():
+    bash_command = 'base64 "main_image.jpg" | curl -d @- "https://detect.roboflow.com/detection-tyre/1?api_key=0Uglhm9vMkjvOzEnA7t2"'
 
+    process = subprocess.Popen(bash_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output, error = process.communicate()
+
+    if output:
+        print("Output:", output.decode())
+        return output.decode()
+    if error:
+        print("Error:", error.decode())
+        return None
 
 
 def load_image():
@@ -75,6 +87,7 @@ def main():
     st.title('Tyre Classification')
     option = st.selectbox('Choose Model', ('ktm-rc-200', 'ktm-duke-250'))
     
+    """
     try:
         rf = Roboflow(api_key="0Uglhm9vMkjvOzEnA7t2")   
     except Exception as e:
@@ -90,7 +103,7 @@ def main():
     except Exception as e:
         logging.error("Error Occurred", exc_info=True)
  
-
+    """
 
      
     image, svd_img = load_image()
@@ -99,8 +112,9 @@ def main():
     seal_bear = False
     nok_flag = False
     if result:
-        results = predict(model, svd_img)
+        #results = predict(model, svd_img)
         #results = predict(model2, url)
+        results = curl_command()
         print("Prediction Results are...")	
         print(results)
         if len(results['predictions']) == 0:
