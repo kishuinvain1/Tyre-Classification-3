@@ -9,11 +9,19 @@ import numpy as np
 import base64
 import logging
 import subprocess
+from urllib.parse import quote
 
 
 def curl_command():
     print("<<<<<<<Inside curl_command>>>>>>>>>>>")
-    bash_command = 'base64 "main_image_original.jpg" | curl -d @- "https://detect.roboflow.com/detection-tyre/1?api_key=0Uglhm9vMkjvOzEnA7t2"'
+    # Your image URL
+    image_url = 'main_image_original.jpg'
+
+    # Encode the image URL
+    encoded_url = quote(image_url, safe=':/')
+
+    # Construct the cURL command with the encoded URL as a variable
+    curl_command = f'curl -X POST "https://detect.roboflow.com/detection-tyre/1?api_key=0Uglhm9vMkjvOzEnA7t2&image={encoded_url}"'
 
     process = subprocess.Popen(bash_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, error = process.communicate()
@@ -23,7 +31,7 @@ def curl_command():
         return output.decode()
     if error:
         print("Error:", error.decode())
-        return None
+        return error.decode()
 
 
 def load_image():
