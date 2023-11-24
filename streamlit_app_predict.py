@@ -12,10 +12,10 @@ import subprocess
 from urllib.parse import quote
 
 
-def curl_command():
+def curl_command(svd_img):
     print("<<<<<<<Inside curl_command>>>>>>>>>>>")
     # Your image URL
-    image_url = 'main_image_original.jpg'
+    image_url = svd_img
 
     # Encode the image URL
     encoded_url = quote(image_url, safe=':/')
@@ -104,7 +104,7 @@ def main():
     if result:
         #results = predict(model, svd_img)
         #results = predict(model2, url)
-        results = curl_command()
+        results = curl_command(svd_img)
         print("Prediction Results are...")	
         print(results)
         if len(results['predictions']) == 0:
