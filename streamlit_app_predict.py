@@ -28,7 +28,7 @@ def curl_command(url):
 
     if output:
         print("Output:", output.decode())
-        st.write("Output:", output.decode())
+        st.write("Output:", type(output.decode()))
         return output.decode()
     if error:
         print("Error:", error.decode())
