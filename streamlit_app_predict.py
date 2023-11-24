@@ -100,7 +100,7 @@ def main():
     image, svd_img = load_image()
 
     url = st.text_input("URL:")
-    print('url is:', url)
+    st.write('url is:', url)
 
     result = st.button('Detect')
     seal_bear = False
