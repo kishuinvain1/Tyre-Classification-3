@@ -29,7 +29,7 @@ def curl_command(url):
 
     if output:
         print("Output:", output.decode())
-        st.write("Output:", output.decode())
+        #st.write("Output:", output.decode())
         return json.loads(output.decode())
     if error:
         print("Error:", error.decode())
