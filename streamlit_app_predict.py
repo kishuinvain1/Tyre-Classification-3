@@ -12,6 +12,7 @@ import subprocess
 
 
 def curl_command():
+    print("<<<<<<<Inside curl_command>>>>>>>>>>>")
     bash_command = 'base64 "main_image_original.jpg" | curl -d @- "https://detect.roboflow.com/detection-tyre/1?api_key=0Uglhm9vMkjvOzEnA7t2"'
 
     process = subprocess.Popen(bash_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
