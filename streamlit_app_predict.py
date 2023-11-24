@@ -21,7 +21,7 @@ def curl_command():
     encoded_url = quote(image_url, safe=':/')
 
     # Construct the cURL command with the encoded URL as a variable
-    curl_command = f'curl -X POST "https://detect.roboflow.com/detection-tyre/1?api_key=0Uglhm9vMkjvOzEnA7t2&image={encoded_url}"'
+    bash_command = f'curl -X POST "https://detect.roboflow.com/detection-tyre/1?api_key=0Uglhm9vMkjvOzEnA7t2&image={encoded_url}"'
 
     process = subprocess.Popen(bash_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, error = process.communicate()
