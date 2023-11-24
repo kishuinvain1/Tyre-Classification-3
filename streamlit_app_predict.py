@@ -76,7 +76,7 @@ def main():
     
 
     rf = Roboflow(api_key="0Uglhm9vMkjvOzEnA7t2")
-    project = rf.workspace().project("tyre-classification-icjz7")
+    project = rf.workspace().project("detection-tyre")
     model = project.version(1).model
      
     image, svd_img = load_image()
