@@ -13,7 +13,7 @@ from urllib.parse import quote
 import json
 
 
-def curl_command(url):
+def curl_command_hosted(url):
     print("<<<<<<<Inside curl_command>>>>>>>>>>>")
     # Your image URL
     image_url = url
@@ -30,6 +30,26 @@ def curl_command(url):
     if output:
         print("Output:", output.decode())
         #st.write("Output:", output.decode())
+        return json.loads(output.decode())
+    if error:
+        print("Error:", error.decode())
+        st.write("Error:", error.decode())
+        return error.decode()
+
+
+def curl_command():
+    print("<<<<<<<Inside curl_command>>>>>>>>>>>")
+    
+    # Replace 'YOUR_BASH_COMMAND_HERE' with your actual bash command
+    bash_command = 'base64 "main_image.jpg" | curl -d @- "https://detect.roboflow.com/detection-tyre/1?api_key=0Uglhm9vMkjvOzEnA7t2"'
+
+    # Execute the bash command
+    process = subprocess.Popen(bash_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output, error = process.communicate()
+
+    if output:
+        print("Output:", output.decode())
+        st.write("Output:", output.decode())
         return json.loads(output.decode())
     if error:
         print("Error:", error.decode())
@@ -111,7 +131,7 @@ def main():
     if result:
         #results = predict(model, svd_img)
         #results = predict(model2, url)
-        results = curl_command(url)
+        results = curl_command()
         print("Prediction Results are...")	
         print(results)
         if len(results['predictions']) == 0:
