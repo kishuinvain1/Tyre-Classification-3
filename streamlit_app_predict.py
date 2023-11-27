@@ -200,13 +200,13 @@ def main():
 
             #Disc Brake Specs
             if "ktm-rc-200-rw" in cl:
-                st.write('*Disc Brake: 5 Bolts')   
+                st.write('*Disc Brake: 5 Bolts, Silver Colored')   
             elif "ktm-rc-200-fw" in cl:
-                st.write('*Disc Brake: 5 Bolts') 
+                st.write('*Disc Brake: 5 Bolts, Silver Colored') 
             elif "ktm-duke-250-rw" in cl:
-                st.write('*Disc Brake: 5 Bolts')
+                st.write('*Disc Brake: 5 Bolts, Silver Colored')
             elif "ktm-duke-250-fw" in cl:
-                st.write('*Disc Brake: 5 Bolts')   
+                st.write('*Disc Brake: 5 Bolts, Silver Colored')   
 
 
             #Sensor Disc Specs
